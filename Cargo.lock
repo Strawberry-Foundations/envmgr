@@ -24,7 +24,18 @@ checksum = "613afe47fcd5fac7ccf1db93babcb082c5994d996f20b8b159f2ad1658eb5724"
 name = "envmgr"
 version = "0.1.0"
 dependencies = [
+ "karen",
  "nix",
+]
+
+[[package]]
+name = "karen"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "92794784d4ce2ae40650b824650f005aa7fd6dbdeb636f6260c9153f927d1e72"
+dependencies = [
+ "libc",
+ "log",
 ]
 
 [[package]]
@@ -32,6 +43,12 @@ name = "libc"
 version = "0.2.155"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "97b3888a4aecf77e811145cadf6eef5901f4782c53886191b2f693f24761847c"
+
+[[package]]
+name = "log"
+version = "0.4.22"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a7a70ba024b9dc04c27ea2f0c0548feb474ec5c54bba33a7f72f873a39d07b24"
 
 [[package]]
 name = "nix"
