@@ -1,14 +1,14 @@
 use std::process::{Command, Stdio};
-use crate::env_mngt::prep::{prep_fs, chroot};
+use crate::env_mngt::prep::{prep_fs, chroot, clean};
 
-pub fn enter(env_path: &str) {
+pub fn enter(env_path: &str, user: &str) {
     let shell = "bash"; // change later
     
     println!("Entering environment...");
-    
-    karen::escalate_if_needed().expect("karen fail");
-    
-    prep_fs(env_path).expect("Error while prepearing the environment");
+
+    karen::escalate_if_needed().expect("Error while trying to get root priviliges");
+
+    prep_fs(env_path, user).expect("Error while prepearing the environment");
     chroot(env_path).expect("Error while entering the environment");
 
     let mut cmd = Command::new(shell);
@@ -24,4 +24,6 @@ pub fn enter(env_path: &str) {
     if !status.success() {
         eprintln!("Shell ended with status: {}", status);
     }
+
+    clean(env_path);
 }
